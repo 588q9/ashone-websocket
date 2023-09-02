@@ -1,4 +1,4 @@
-package top.ashonecoder.ashonewebsocket.Packet;
+package top.ashonecoder.ashonewebsocket.packet;
 
 import lombok.Builder;
 import lombok.Data;
@@ -19,5 +19,12 @@ public class TextPacket {
     private String data;
 
     private String uri;
+
+    public static TextPacket message(String identity,String message) {
+
+
+       return TextPacket.builder().identity(identity).data(message).build();
+
+    }
 
 }

@@ -1,8 +1,11 @@
 package top.ashonecoder.ashonewebsocket.processor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import top.ashonecoder.ashonewebsocket.annotation.Processing;
 import top.ashonecoder.ashonewebsocket.processor.container.ProcessContainer;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Map;
@@ -17,19 +20,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AbstractProcessor implements Processor {
     private final Map<String, Method> processingMap = new ConcurrentHashMap<>();
-    protected ProcessContainer container;
+    @Resource
+    private ProcessContainer container;
 
-
-    public AbstractProcessor(ProcessContainer container) {
-        this.container = container;
-        this.postConstuct();
-    }
 
     public Method getPrrocessing(String resourceIdentity) {
         return processingMap.get(resourceIdentity);
 
     }
-
+    @PostConstruct
     public void postConstuct() {
         addProcessing(this.getClass());
         container.addProcessor(this.getClass(), this);

@@ -9,7 +9,7 @@ import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-import top.ashonecoder.ashonewebsocket.Packet.TextPacket;
+import top.ashonecoder.ashonewebsocket.packet.TextPacket;
 import top.ashonecoder.ashonewebsocket.exception.WSException;
 import top.ashonecoder.ashonewebsocket.holder.WebSocketEntry;
 import top.ashonecoder.ashonewebsocket.holder.WebSocketHolder;
